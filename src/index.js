@@ -12,14 +12,10 @@ const app = html`
 				<ul>
 					<li>Comprare Pane <button>Rimuovi</button></li>
 
-					<br />
-
 					<li>Comprare Latte <button>Rimuovi</button></li>
 
-					<br />
 					<li>Comprare Vino <button>Rimuovi</button></li>
 
-					<br />
 					<li>Comprare Uovafdsdssdfds<button>Rimuovi</button></li>
 				</ul>
 			</div>

@@ -2,7 +2,9 @@ import { html, render } from "lit-html";
 
 export class Model {
 	constructor(node) {
-		this._items.push("cereali", "pane", "cavoli");
+		this.addItem("cereali");
+		this.addItem("vino");
+		this.addItem("pane");
 		render(this.view(), node);
 	}
 

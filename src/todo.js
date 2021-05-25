@@ -1,4 +1,10 @@
-class Model {
+import { html, render } from "lit-html";
+
+export class Model {
+  constructor(node) {
+    render(this.view(), node);
+  }
+
   _items = [];
 
   // Functionality
@@ -8,6 +14,15 @@ class Model {
 
   toogleItem(index) {
     this._items[index].completed = !this._items[index].completed;
+  }
+
+  // View
+  view() {
+    return html`
+      <div class="container">
+        <!-- ... -->
+      </div>
+    `;
   }
 
   // Utils
@@ -23,43 +38,3 @@ class Model {
     return itemsProv.join(" \n");
   }
 }
-
-const todoList = new Model();
-// todoList.addItem("Comprare uova");
-// todoList.addItem("Comprare pane");
-// todoList.addItem("Comprare vino");
-// todoList.addItem("Comprare birra");
-// todoList.addItem("Comprare olio");
-// todoList.addItem("Comprare sale");
-
-// console.log(todoList.showItem);
-
-// //console.log(todoList._items);
-// todoList.completeItem(5);
-// todoList.completeItem(2);
-
-// const list2 = createTodoList("list2");
-
-// list2.addItem("comprare patatine");
-
-// console.log(list2.showItem);
-todoList.addItem("Comprare uova");
-todoList.addItem("Comprare pane");
-todoList.addItem("Comprare uova");
-todoList.addItem("Comprare pane");
-todoList.addItem("Comprare vino");
-todoList.addItem("Comprare birra");
-todoList.addItem("Comprare olio");
-todoList.addItem("Comprare sale");
-console.log(todoList._items);
-
-todoList.toogleItem(1);
-
-todoList.toogleItem(2);
-todoList.toogleItem(4);
-
-//todoList.toogleItem(1);
-//console.log(todoList._items);
-
-//todoList2.toogleItem(1);
-console.log(todoList.logItems());

@@ -31,7 +31,10 @@ export class Model {
 				<main>
 					<div class="list-todo">
 						<ul>
-							${this._items}
+							${this._items.map(
+								(obj) =>
+									html`<li>Comprare ${obj.todo} <button>Rimuovi</button></li>`
+							)}
 						</ul>
 					</div>
 				</main>

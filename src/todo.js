@@ -7,13 +7,7 @@ class Model {
   }
 
   toogleItem(index) {
-    //`${index}. ${this.arrItems[index]} (fatto)`
-
-    if (this._items[index].completed === false) {
-      this._items[index].completed = true;
-    } else {
-      this._items[index].completed = false;
-    }
+    this._items[index].completed = !this._items[index].completed;
   }
 
   // Utils

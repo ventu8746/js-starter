@@ -1,5 +1,15 @@
 import { html, render } from "lit-html";
 
+function viewTodoItem(elem) {
+	return html`<li>Comprare ${elem} <button>Rimuovi</button></li>`;
+}
+
+const items = [
+	viewTodoItem("ciao"),
+	viewTodoItem("cereali"),
+	viewTodoItem("calzetti"),
+];
+
 const app = html`
 	<div class="container">
 		<header>
@@ -10,11 +20,12 @@ const app = html`
 		<main>
 			<div class="list-todo">
 				<ul>
-					<li>Comprare Pane <button>Rimuovi</button></li>
+					${items.map((elem) => elem)}
+					<li>Comprare pane <button>Rimuovi</button></li>
 
 					<li>Comprare Latte <button>Rimuovi</button></li>
 
-					<li>Comprare Vino <button>Rimuovi</button></li>
+					<li>Comprare Vino sdadasa<button>Rimuovi</button></li>
 
 					<li>Comprare Uovafdsdssdfds<button>Rimuovi</button></li>
 				</ul>

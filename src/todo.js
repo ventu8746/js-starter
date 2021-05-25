@@ -2,10 +2,11 @@ import { html, render } from "lit-html";
 
 export class Model {
   constructor(node) {
-    this.addItem("cereali");
-    this.addItem("vino");
-    this.addItem("pane");
-    render(this.view(), node);
+    this._render = () => {
+      render(this.view(), node);
+    };
+
+    this._render();
   }
 
   _items = [];
@@ -13,10 +14,12 @@ export class Model {
   // Functionality
   addItem(todo) {
     this._items.push({ todo: todo, completed: false });
+    this._render();
   }
 
   toogleItem(index) {
     this._items[index].completed = !this._items[index].completed;
+    this._render();
   }
 
   // View

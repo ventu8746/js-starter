@@ -19,13 +19,6 @@ const app = html`
 			<div class="list-todo">
 				<ul>
 					${items}
-					<li>Comprare pane <button>Rimuovi</button></li>
-
-					<li>Comprare Latte <button>Rimuovi</button></li>
-
-					<li>Comprare Vino sdadasa<button>Rimuovi</button></li>
-
-					<li>Comprare Uovafdsdssdfds<button>Rimuovi</button></li>
 				</ul>
 			</div>
 		</main>

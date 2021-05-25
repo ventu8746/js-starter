@@ -4,11 +4,9 @@ function viewTodoItem(elem) {
 	return html`<li>Comprare ${elem} <button>Rimuovi</button></li>`;
 }
 
-const items = [
-	viewTodoItem("ciao"),
-	viewTodoItem("cereali"),
-	viewTodoItem("calzetti"),
-];
+const todos = ["ciao", "cereali", "calzetti"];
+
+const items = todos.map((elem) => viewTodoItem(elem));
 
 const app = html`
 	<div class="container">
@@ -20,7 +18,7 @@ const app = html`
 		<main>
 			<div class="list-todo">
 				<ul>
-					${items.map((elem) => elem)}
+					${items}
 					<li>Comprare pane <button>Rimuovi</button></li>
 
 					<li>Comprare Latte <button>Rimuovi</button></li>
@@ -35,3 +33,4 @@ const app = html`
 `;
 
 render(app, document.getElementById("root"));
+console.log(items);

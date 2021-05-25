@@ -1,37 +1,36 @@
-function createTodoList(todoList) {
-	return {
-		_items: [],
+class Model {
+  _items = [];
 
-		addItem(todo) {
-			this._items.push({ todo: todo, completed: false });
-		},
+  // Functionality
+  addItem(todo) {
+    this._items.push({ todo: todo, completed: false });
+  }
 
-		get showItem() {
-			let itemsProv = [];
-			for (let i = 0; i < this._items.length; i++) {
-				if (this._items[i].completed) {
-					itemsProv.push(`${i}. ${this._items[i]["todo"]} (fatto)`);
-				} else {
-					itemsProv.splice(i, 1, `${i}. ${this._items[i]["todo"]} `);
-				}
-			}
-			return itemsProv.join(" \n");
-		},
+  toogleItem(index) {
+    //`${index}. ${this.arrItems[index]} (fatto)`
 
-		toogleItem(index) {
-			//`${index}. ${this.arrItems[index]} (fatto)`
+    if (this._items[index].completed === false) {
+      this._items[index].completed = true;
+    } else {
+      this._items[index].completed = false;
+    }
+  }
 
-			if (this._items[index].completed === false) {
-				this._items[index].completed = true;
-			} else {
-				this._items[index].completed = false;
-			}
-		},
-	};
+  // Utils
+  logItems() {
+    let itemsProv = [];
+    for (let i = 0; i < this._items.length; i++) {
+      if (this._items[i].completed) {
+        itemsProv.push(`${i}. ${this._items[i]["todo"]} (fatto)`);
+      } else {
+        itemsProv.splice(i, 1, `${i}. ${this._items[i]["todo"]} `);
+      }
+    }
+    return itemsProv.join(" \n");
+  }
 }
 
-const todoList = createTodoList("todoList");
-
+const todoList = new Model();
 // todoList.addItem("Comprare uova");
 // todoList.addItem("Comprare pane");
 // todoList.addItem("Comprare vino");
@@ -69,4 +68,4 @@ todoList.toogleItem(4);
 //console.log(todoList._items);
 
 //todoList2.toogleItem(1);
-console.log(todoList.showItem);
+console.log(todoList.logItems());

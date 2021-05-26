@@ -38,14 +38,16 @@ export class Model {
         </header>
         <main>
           <div class="list-todo">
-            ${this._items.length === 0
-              ? html`<h5>INSERIRE UN TODO!</h5>`
-              : html`<h5></h5>`}
             <ul>
-              ${this._items.map(
-                (obj) =>
-                  html`<li>Comprare ${obj.todo} <button>Rimuovi</button></li>`
-              )}
+              ${this._items.length === 0
+                ? html`<h5>INSERIRE UN TODO!</h5>`
+                : this._items.map(
+                    (obj, index) =>
+                      html`<li>
+                        ${index + 1}: Comprare ${obj.todo}
+                        <button>Rimuovi</button>
+                      </li>`
+                  )}
             </ul>
           </div>
         </main>

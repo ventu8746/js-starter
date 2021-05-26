@@ -22,6 +22,11 @@ export class Model {
     this._render();
   }
 
+  deleteItem(index) {
+    this._items.splice(index, 1);
+    this._render();
+  }
+
   // View
   view() {
     return html`
@@ -33,6 +38,9 @@ export class Model {
         </header>
         <main>
           <div class="list-todo">
+            ${this._items.length === 0
+              ? html`<h5>INSERIRE UN TODO!</h5>`
+              : html`<h5></h5>`}
             <ul>
               ${this._items.map(
                 (obj) =>

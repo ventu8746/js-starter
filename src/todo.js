@@ -2,11 +2,12 @@ import { html, render } from "lit-html";
 
 export class Model {
   constructor(node) {
-    this._render = () => {
-      render(this.view(), node);
-    };
-
+    this._node = node;
     this._render();
+  }
+
+  _render() {
+    render(this.view(), this._node);
   }
 
   _items = [];

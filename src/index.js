@@ -1,6 +1,8 @@
 import { Model } from "./todo";
 
-const app = new Model(document.getElementById("root"));
+const node = document.getElementById("root");
+
+const app = new Model(node);
 
 app.addItem("a");
 app.addItem("b");

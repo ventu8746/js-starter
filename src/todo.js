@@ -7,18 +7,25 @@ export class Model {
   }
 
   _render() {
+    console.log(this);
     render(this.view(), this._node);
   }
 
   _items = [];
+  _inputString = "stringa iniziale";
 
   // Functionality
+  setInputString(value) {
+    this._inputString = value;
+    this._render();
+  }
+
   addItem(todo) {
     this._items.push({ todo: todo, completed: false });
     this._render();
   }
 
-  toogleItem(index) {
+  toggleItem(index) {
     this._items[index].completed = !this._items[index].completed;
     this._render();
   }
@@ -34,8 +41,21 @@ export class Model {
       <div class="container">
         <header>
           <h1>App Todo List</h1>
-          <input type="text" name="todo-elemnt" id="todo-elemnt" />
-          <button>Aggiungi</button>
+          <h3>
+            Testo dell'input in maiuscolo: ${this._inputString.toUpperCase()}
+          </h3>
+          <input
+            .value=${this._inputString}
+            @input=${(evt) => this.setInputString(evt.target.value)}
+            type="text"
+            name="todo-elemnt"
+            id="todo-elemnt"
+            placeholder="Inserire Todo!"
+            autofocus
+          />
+          <button @click=${() => this.addItem(this._inputString)}>
+            Aggiungi
+          </button>
         </header>
         <main>
           <div class="list-todo">
@@ -45,8 +65,13 @@ export class Model {
                 : this._items.map(
                     (obj, index) =>
                       html`<li>
-                        ${index + 1}: Comprare ${obj.todo}
-                        <button>Rimuovi</button>
+                        ${index + 1}: Comprare ${obj.todo} ${obj.completed}
+                        <button @click=${() => this.deleteItem(index)}>
+                          Rimuovi
+                        </button>
+                        <button @click=${() => this.toggleItem(index)}>
+                          Toggle
+                        </button>
                       </li>`
                   )}
             </ul>

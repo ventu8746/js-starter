@@ -12,3 +12,15 @@ Realizzare un two-way bindings per un checkbox:
 4. Fare in modo che, quando il checkbox viene (de)selezionato, la proprietà nella classe venga modificata (diventando quindi il suo opposto). Usare l'evento "`input`".
 5. Controllare se funziona vedendo nella console, le proprietà della classe Model (ci dovrebbe essere un console.log dentro il metodo \_render())
 6. Nell'interfaccia, mostrare anche una scritta che dica se il valore è true o false
+
+## 3
+
+Usando il checkbox realizzato nel punto 2), realizzare la seguente funzionalità:
+
+- Se il checkbox ha valore false, mostrare il testo dell'input del form, sopra il form (come è implementato attualmente)
+- Se il checkbox ha valore true, mostrare quella scritta con tutte le lettere maiuscole (c'è un metodo che lo fa)
+
+## 4
+
+Attualmente premere il tasto invio non aggiunge todos. Correggere questo comportamento usando un `<form>` , e invece di usare l'evento `click` sul bottone, usare l'evento `submit` sul `<form>`.
+Serve chiamare il metodo event.preventDefault() sull'evento submit.

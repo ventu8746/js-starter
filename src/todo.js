@@ -3,6 +3,7 @@ import { html, render } from "lit-html";
 export class Model {
   constructor(node) {
     this._node = node;
+    this._check = true;
     this._render();
   }
 
@@ -16,7 +17,15 @@ export class Model {
 
   // Functionality
   setInputString(value) {
-    this._inputString = value;
+    this._check
+      ? (this._inputString = value.toUpperCase())
+      : (this._inputString = value);
+
+    this._render();
+  }
+
+  setCheckBox(evt) {
+    this._check = !this._check;
     this._render();
   }
 
@@ -27,6 +36,7 @@ export class Model {
 
   toggleItem(index) {
     this._items[index].completed = !this._items[index].completed;
+
     this._render();
   }
 
@@ -41,21 +51,35 @@ export class Model {
       <div class="container">
         <header>
           <h1>App Todo List</h1>
-          <h3>
-            Testo dell'input in maiuscolo: ${this._inputString.toUpperCase()}
-          </h3>
-          <input
-            .value=${this._inputString}
-            @input=${(evt) => this.setInputString(evt.target.value)}
-            type="text"
-            name="todo-elemnt"
-            id="todo-elemnt"
-            placeholder="Inserire Todo!"
-            autofocus
-          />
-          <button @click=${() => this.addItem(this._inputString)}>
-            Aggiungi
-          </button>
+          <h3>Testo dell'input : ${this._inputString}</h3>
+          <form
+            id="form"
+            @submit=${(evt) => {
+              this.addItem(this._inputString);
+              evt.preventDefault();
+            }}
+          >
+            <input
+              .value=${this._inputString}
+              @input=${(evt) => this.setInputString(evt.target.value)}
+              type="text"
+              name="todo-elemnt"
+              id="todo-elemnt"
+              placeholder="Inserire Todo!"
+              maxlength="15"
+              autofocus
+            />
+            <button type="submit">Aggiungi</button>
+            <label for="check"
+              >${this._check ? "Maiuscolo" : "Minuscolo"}
+              <input
+                @input="${(evt) => this.setCheckBox(evt.target.value)}"
+                type="checkbox"
+                checked="${this._check}"
+                name="check"
+              />
+            </label>
+          </form>
         </header>
         <main>
           <div class="list-todo">
@@ -64,7 +88,7 @@ export class Model {
                 ? html`<h5>INSERIRE UN TODO!</h5>`
                 : this._items.map(
                     (obj, index) =>
-                      html`<li>
+                      html`<li class=${obj.completed ? "completed" : ""}>
                         ${index + 1}: Comprare ${obj.todo} ${obj.completed}
                         <button @click=${() => this.deleteItem(index)}>
                           Rimuovi

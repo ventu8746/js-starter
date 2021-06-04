@@ -24,3 +24,29 @@ Usando il checkbox realizzato nel punto 2), realizzare la seguente funzionalità
 
 Attualmente premere il tasto invio non aggiunge todos. Correggere questo comportamento usando un `<form>` , e invece di usare l'evento `click` sul bottone, usare l'evento `submit` sul `<form>`.
 Serve chiamare il metodo event.preventDefault() sull'evento submit.
+
+## 5
+Estrarre [questo pezzo di codice](https://github.com/ventu8746/js-starter/blob/5e5001ff4a19a658ca6e4580bd2843f065fb40d8/src/todo.js#L73)
+
+```js
+<label for="check">
+   ${this._check ? "Maiuscolo" : "Minuscolo"}
+    <input
+      @input="${(evt) => this.setCheckBox(evt.target.value)}"
+      type="checkbox"
+      checked="${this._check}"
+      name="check"
+    />
+  </label>
+```
+
+In modo da avere una funzione riusabile. (non metodo)
+
+Suggerimento:
+```js
+// checked : boolean
+// onInput : string => void
+function viewCheckBox(checked, onInput) {
+  return html` ... `
+}
+```

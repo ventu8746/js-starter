@@ -17,9 +17,7 @@ export class Model {
 
   // Functionality
   setInputString(value) {
-    this._check
-      ? (this._inputString = value.toUpperCase())
-      : (this._inputString = value);
+    this._inputString = value;
 
     this._render();
   }
@@ -51,7 +49,10 @@ export class Model {
       <div class="container">
         <header>
           <h1>App Todo List</h1>
-          <h3>Testo dell'input : ${this._inputString}</h3>
+          <h3>
+            Testo dell'input :
+            ${this._check ? this._inputString.toUpperCase() : this._inputString}
+          </h3>
           <form
             id="form"
             @submit=${(evt) => {

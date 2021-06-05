@@ -43,6 +43,18 @@ export class Model {
     this._render();
   }
 
+  vievCheckBox() {
+    return html` <label for="check"
+      >${this._check ? "Maiuscolo" : "Minuscolo"}
+      <input
+        @input="${(evt) => this.setCheckBox(evt.target.value)}"
+        type="checkbox"
+        checked="${this._check}"
+        name="check"
+      />
+    </label>`;
+  }
+
   // View
   view() {
     return html`
@@ -71,7 +83,7 @@ export class Model {
               autofocus
             />
             <button type="submit">Aggiungi</button>
-            <label for="check"
+            <!-- <label for="check"
               >${this._check ? "Maiuscolo" : "Minuscolo"}
               <input
                 @input="${(evt) => this.setCheckBox(evt.target.value)}"
@@ -79,7 +91,8 @@ export class Model {
                 checked="${this._check}"
                 name="check"
               />
-            </label>
+            </label> -->
+            ${this.vievCheckBox()}
           </form>
         </header>
         <main>

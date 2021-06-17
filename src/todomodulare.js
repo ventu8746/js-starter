@@ -70,7 +70,7 @@ function toggleItem(arr, index) {
 //deleteItem([{todo:'pane',completed:false}],12213) dovrebbe tornare un errore ''the index that you have insert is inexistent!''
 
 function deleteItems(arr, index) {
-  if (index > arr.length - 1 && index < 0) {
+  if (index > arr.length - 1 || index < 0) {
     throw new Error("the index that you have insert is inexistent");
   }
 
@@ -84,7 +84,7 @@ function deleteItems(arr, index) {
   });
 }
 
-console.log(deleteItems(arrFull, -1));
 console.log(deleteItems(arrFull, 3));
+//console.log(deleteItems(arrFull, 3));
 
 //console.log(arrFull);

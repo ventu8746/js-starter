@@ -43,18 +43,6 @@ export class Model {
     this._render();
   }
 
-  vievCheckBox() {
-    return html` <label for="check"
-      >${this._check ? "Maiuscolo" : "Minuscolo"}
-      <input
-        @input="${(evt) => this.setCheckBox(evt.target.value)}"
-        type="checkbox"
-        checked="${this._check}"
-        name="check"
-      />
-    </label>`;
-  }
-
   // View
   view() {
     return html`
@@ -92,7 +80,7 @@ export class Model {
                 name="check"
               />
             </label> -->
-            ${this.vievCheckBox()}
+            <!-- ${viewCheckBox(this._check, this.setCheckBox.bind(this))} -->
           </form>
         </header>
         <main>
@@ -132,3 +120,47 @@ export class Model {
     return itemsProv.join(" \n");
   }
 }
+/**
+ * @param check {boolean}
+ * @param onCheck {() => undefined}
+ */
+// function viewCheckBox(check, onCheck) {
+//   return html`<label for="check"
+//     >${check ? "Maiuscolo" : "Minuscolo"}
+
+//     <input
+//       @input="${(evt) => onCheck(evt.target.value)}"
+//       type="checkbox"
+//       ?checked="${check}"
+//       name="check"
+//     />
+//   </label>`;
+// }
+
+//addItem prende come parametro un array e una stringa e inserisce la stringa in un oggetto successivamente aggiunge l'oggetto all'array
+//addItem([{todo:'pane',completed:false}],'latte') dovrebbe tornare [{todo:'pane',completed:false},{todo:'latte',completed:false}]
+//addItem([{todo:'pane',completed:false}],'') dovrebbe tornare [{todo:'pane',completed:false}]
+//addItem([{todo:'pane',completed:false}],12213) dovrebbe tornare 'il programma accetta solo testo per i todo!'
+
+const arr = [
+  {
+    todo: "pane",
+    completed: false,
+  },
+];
+
+function addItem(arr, string) {
+  const newArr = arr.map((obj) => obj);
+
+  if (string.typeOf === "number") {
+    return "il programma accetta solo testo per i todo!";
+  } else {
+    newArr.push({
+      todo: string,
+      completed: false,
+    });
+  }
+  return newArr;
+}
+
+console.log(newArr(arr, "ciaone"));

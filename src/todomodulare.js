@@ -84,7 +84,7 @@ function deleteItems(arr, index) {
   });
 }
 
-console.log(deleteItems(arrFull, 1));
+console.log(deleteItems(arrFull, -1));
 console.log(deleteItems(arrFull, 3));
 
 //console.log(arrFull);

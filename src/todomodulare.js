@@ -34,10 +34,10 @@ const arrFull = addItem(
   addItem(addItem(addItem(emptyTodos, "first"), "second"), "third"),
   "fourth"
 );
-//console.log(addItem(arr, "ciao"));
-//console.log(addItem(arr, "miao"));
-// creare un array con più todo in questo modo
-console.log(arrFull);
+// //console.log(addItem(arr, "ciao"));
+// //console.log(addItem(arr, "miao"));
+// // creare un array con più todo in questo modo
+// console.log(arrFull);
 
 //console.log(arr);
 //console.log(emptyTodos);
@@ -70,18 +70,21 @@ function toggleItem(arr, index) {
 //deleteItem([{todo:'pane',completed:false}],12213) dovrebbe tornare un errore ''the index that you have insert is inexistent!''
 
 function deleteItems(arr, index) {
-  const newArr = [...arr];
   if (index > arr.length - 1) {
     throw new Error("the index that you have insert is inexistent");
-  } else if (index === "") {
-    return newArr;
   }
 
-  newArr.splice(index, 1);
-  return newArr;
+  if (index === "") {
+    return arr;
+  } else {
+  }
+
+  return arr.filter((elem) => {
+    return arr[index] !== elem;
+  });
 }
 
-console.log(deleteItems(arrFull, 3));
 console.log(deleteItems(arrFull, 1));
+//console.log(deleteItems(arrFull,));
 
-console.log(arrFull);
+//console.log(arrFull);

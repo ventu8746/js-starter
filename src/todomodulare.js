@@ -12,25 +12,20 @@ const arr = [
 
 function addItem(arr, string) {
   let newArr = arr.map((obj) => obj);
-  try {
-    if (string == "") throw "the todo that you have insert is empty ";
-    if (typeof string === "number")
-      throw "the todo that you have insert is not a string";
-  } catch (err) {
-    console.log(err);
-  } finally {
-    if (string === "") {
-      return newArr;
-    } else {
-      const arrConc = newArr.concat([
-        {
-          todo: string,
-          completed: false,
-        },
-      ]);
-      return arrConc;
-    }
+
+  if (typeof string === !"string") {
+    throw new Error("il programma accetta solo testo per i todo");
   }
+
+  if (string === "") {
+    return arr;
+  }
+  return newArr.concat([
+    {
+      todo: string,
+      completed: false,
+    },
+  ]);
 }
 
 const emptyTodos = [];
@@ -42,7 +37,7 @@ const arrFull = addItem(
 //console.log(addItem(arr, "ciao"));
 //console.log(addItem(arr, "miao"));
 // creare un array con più todo in questo modo
-//console.log(arrFull);
+console.log(arrFull);
 
 //console.log(arr);
 //console.log(emptyTodos);
